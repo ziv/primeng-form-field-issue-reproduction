@@ -7,8 +7,12 @@ import {Select} from 'primeng/select';
   selector: 'app-root',
   imports: [InputNumber, FormField, Select],
   template: `
+    <h1>Prime controls</h1>
     <p-input-number [formField]="modelForm.numericValue"></p-input-number>
     <p-select [formField]="modelForm.anotherNumericValue" [options]="options"></p-select>
+
+    <h1>Native controls</h1>
+    <input type="number" [formField]="modelForm.numericValue" />
   `
 })
 export class App {
