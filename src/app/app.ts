@@ -1,12 +1,23 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, signal} from '@angular/core';
+import {form, FormField} from '@angular/forms/signals';
+import {InputNumber} from 'primeng/inputnumber';
+import {Select} from 'primeng/select';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [InputNumber, FormField, Select],
+  template: `
+    <p-input-number [formField]="modelForm.numericValue"></p-input-number>
+    <p-select [formField]="modelForm.anotherNumericValue" [options]="options"></p-select>
+  `
 })
 export class App {
-  protected readonly title = signal('primeng-form-field-issue-reproduction');
+  options = [1, 2, 3, 4];
+
+  model = signal({
+    numericValue: 1,
+    anotherNumericValue: 2
+
+  })
+  modelForm = form(this.model);
 }
